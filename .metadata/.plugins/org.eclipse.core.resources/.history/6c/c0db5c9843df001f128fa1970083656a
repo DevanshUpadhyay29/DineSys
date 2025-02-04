@@ -1,0 +1,18 @@
+package com.restaurant.admin.entity;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.OneToMany;
+
+public class Category {
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	private Menu menu;
+	
+	
+	private String Chinese;
+	private String northIndian;
+	private String southIndian;
+
+}

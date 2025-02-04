@@ -1,0 +1,39 @@
+package com.restaurant.kitchen.aspect;
+
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+public class LoggingAspect {
+
+    // Before any method in kitchen-service executes, log an entry message.
+    @Before("execution(* com.restaurant.kitchen..*(..))")
+    public void logBefore(JoinPoint joinPoint) {
+        System.out.println("Kitchen-Service: Entering method in controller/service...");
+    }
+
+    // After a method in kitchen-service returns successfully, log an exit message.
+    @AfterReturning(pointcut = "execution(* com.restaurant.kitchen..*(..))", returning = "result")
+    public void logAfterReturning(JoinPoint joinPoint, Object result) {
+        System.out.println("Kitchen-Service: Exiting method after successful execution...");
+    }
+
+    // If a method in kitchen-service throws an exception, log an error message.
+    @AfterThrowing(pointcut = "execution(* com.restaurant.kitchen..*(..))", throwing = "ex")
+    public void logAfterThrowing(JoinPoint joinPoint, Throwable ex) {
+        System.out.println("Kitchen-Service: An exception occurred during method execution.");
+    }
+
+    // After any method in kitchen-service has completed (normal or exceptional), log completion.
+    @After("execution(* com.restaurant.kitchen..*(..))")
+    public void logAfter(JoinPoint joinPoint) {
+        System.out.println("Kitchen-Service: Method execution complete.");
+    }
+}

@@ -1,0 +1,48 @@
+package com.restaurant.user.service;
+
+
+
+class UserServiceTest {
+
+    @Mock
+    private UserRepository userRepository;
+
+    @InjectMocks
+    private UserServiceImpl userService;
+
+    private User user;
+
+    @BeforeEach
+    void setUp() {
+        MockitoAnnotations.openMocks(this);
+        user = new User(1L, "John Doe", "john@example.com");
+    }
+
+    @Test
+    void testGetUserById() {
+        when(userRepository.findById(1L)).thenReturn(Optional.of(user));
+
+        User foundUser = userService.getUserById(1L);
+
+        assertNotNull(foundUser);
+        assertEquals("John Doe", foundUser.getName());
+    }
+
+    @Test
+    void testGetAllUsers() {
+        List<User> users = new ArrayList<>();
+        users.add(user);
+        when(userRepository.findAll()).thenReturn(users);
+
+        List<User> result = userService.getAllUsers();
+
+        assertEquals(1, result.size());
+    }
+
+    @Test
+    void testDeleteUser() {
+        doNothing().when(userRepository).deleteById(1L);
+
+        assertDoesNotThrow(() -> userService.deleteUser(1L));
+    }
+}

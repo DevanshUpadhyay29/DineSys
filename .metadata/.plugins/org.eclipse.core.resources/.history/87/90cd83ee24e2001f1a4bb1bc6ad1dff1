@@ -1,0 +1,7 @@
+package com.resturant.kitchen.feign;
+
+public interface UserServiceClient {
+	
+	
+
+}

@@ -1,0 +1,83 @@
+package com.restaurant.user.service;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.mockito.Mock;
+
+import com.restaurant.user.entity.Order;
+import com.restaurant.user.repository.OrderRepository;
+
+@ExtendWith(MockitoExtension.class)
+class OrderServiceTest {
+
+    @Mock
+    private OrderRepository orderRepository;
+
+    @InjectMocks
+    private OrderServiceImpl orderService;
+
+    private Order order;
+
+    @BeforeEach
+    void setUp() {
+        order = new Order(1L, 101L, "Pizza", "Accepted");
+    }
+
+    @Test
+    void testGetOrderById_Success() {
+        when(orderRepository.findById(1L)).thenReturn(Optional.of(order));
+
+        Order foundOrder = orderService.getOrderById(1L);
+
+        assertNotNull(foundOrder);
+        assertEquals(1L, foundOrder.getId());
+        assertEquals("Pizza", foundOrder.getDishName());
+    }
+
+    @Test
+    void testGetOrderById_NotFound() {
+        when(orderRepository.findById(2L)).thenReturn(Optional.empty());
+
+        assertThrows(OrderNotFoundException.class, () -> orderService.getOrderById(2L));
+    }
+
+    @Test
+    void testSaveOrder() {
+        when(orderRepository.save(any(Order.class))).thenReturn(order);
+
+        Order savedOrder = orderService.saveOrder(order);
+
+        assertNotNull(savedOrder);
+        assertEquals("Pizza", savedOrder.getDishName());
+    }
+
+    @Test
+    void testUpdateOrderStatus_Success() {
+        when(orderRepository.findById(1L)).thenReturn(Optional.of(order));
+        when(orderRepository.save(any(Order.class))).thenReturn(order);
+
+        Order updatedOrder = orderService.updateOrderStatus(1L, "Preparing Food");
+
+        assertEquals("Preparing Food", updatedOrder.getStatus());
+    }
+
+    @Test
+    void testUpdateOrderStatus_InvalidStatus() {
+        when(orderRepository.findById(1L)).thenReturn(Optional.of(order));
+
+        assertThrows(InvalidOrderStatusException.class, () -> orderService.updateOrderStatus(1L, "Delivered"));
+    }
+
+    @Test
+    void testGetOrdersByStatus() {
+        List<Order> orders = Arrays.asList(order);
+        when(orderRepository.findByStatus("Accepted")).thenReturn(orders);
+
+        List<Order> foundOrders = orderService.getOrdersByStatus("Accepted");
+
+        assertEquals(1, foundOrders.size());
+        assertEquals("Pizza", foundOrders.get(0).getDishName());
+    }
+}
+``

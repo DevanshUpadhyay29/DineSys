@@ -1,0 +1,11 @@
+package com.restaurant.kitchen.exception;
+
+public class KitchenServiceException extends RuntimeException {
+    public KitchenServiceException(String message) {
+        super(message);
+    }
+
+    public KitchenServiceException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}

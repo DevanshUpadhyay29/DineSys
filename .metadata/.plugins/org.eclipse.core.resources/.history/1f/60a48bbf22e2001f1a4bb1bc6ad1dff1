@@ -1,0 +1,5 @@
+package com.restaurant.kitchen.feign;
+
+public class UserServiceClient {
+
+}

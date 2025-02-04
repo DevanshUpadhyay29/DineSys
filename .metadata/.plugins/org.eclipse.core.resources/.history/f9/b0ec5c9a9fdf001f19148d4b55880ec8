@@ -1,0 +1,42 @@
+package com.restaurant.user.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.restaurant.user.entity.Order;
+import com.restaurant.user.repository.OrderRepository;
+
+@Service
+public class OrderServiceImpl implements OrderService {
+	
+	@Autowired
+	OrderRepository orderRepository;
+
+	@Override
+	public List<Order> viewMenu() {
+		//In real scenario, menu should be fetched from Admin Service
+		//For now, i have returned a hardcoded list of dishes
+		return List.of(
+				new Order(null, null, "Pizza", "Available"),
+				new Order(null, null, "Burger", "Available"),
+				new Order(null, null, "Pasta", "Available")
+				);
+	}
+
+	@Override
+	public Order placeOrder(Order order) {
+		order.setStatus("Accepted"); 	//Default Order Status
+		return orderRepository.save(order);
+	}
+
+	@Override
+	public Order trackOrder(Long id) {
+		Optional<Order> existingOrder = orderRepository.findById(id);
+		return existingOrder.orElseThrow(() -> new RuntimeException("Order not found with ID: "+id));
+		
+	}
+
+}

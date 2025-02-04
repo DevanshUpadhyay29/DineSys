@@ -1,0 +1,9 @@
+package com.restaurant.kitchen.feign;
+
+
+@FeignClient(name = "user-service", path = "/user")
+public interface UserServiceClient {
+	
+	
+
+}

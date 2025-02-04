@@ -1,0 +1,44 @@
+package com.restaurant.admin.aspect;
+
+
+import java.util.Arrays;
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+public class LoggingAspect {
+
+    // Log before the execution of any method within the admin package
+    @Before("execution(* com.restaurant.admin..*(..))")
+    public void logBefore(JoinPoint joinPoint) {
+        System.out.println("Entering method: " + joinPoint.getSignature().toShortString() +
+                " with arguments: " + Arrays.toString(joinPoint.getArgs()));
+    }
+
+    // Log after a method successfully returns
+    @AfterReturning(pointcut = "execution(* com.restaurant.admin..*(..))", returning = "result")
+    public void logAfterReturning(JoinPoint joinPoint, Object result) {
+        System.out.println("Method " + joinPoint.getSignature().toShortString() +
+                " executed successfully, returned: " + result);
+    }
+
+    // Log after a method throws an exception
+    @AfterThrowing(pointcut = "execution(* com.restaurant.admin..*(..))", throwing = "ex")
+    public void logAfterThrowing(JoinPoint joinPoint, Throwable ex) {
+        System.out.println("Exception in method " + joinPoint.getSignature().toShortString() +
+                ": " + ex.getMessage());
+    }
+
+    // Log after method execution (regardless of outcome)
+    @After("execution(* com.restaurant.admin..*(..))")
+    public void logAfter(JoinPoint joinPoint) {
+        System.out.println("Exiting method: " + joinPoint.getSignature().toShortString());
+    }
+}

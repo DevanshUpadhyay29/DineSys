@@ -1,0 +1,7 @@
+package com.restaurant.admin.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface MenuRepository extends JpaRepository<T, ID> {
+
+}

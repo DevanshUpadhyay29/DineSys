@@ -1,0 +1,45 @@
+package com.restaurant.user.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.restaurant.user.entity.MenuItem;
+import com.restaurant.user.entity.Order;
+import com.restaurant.user.service.OrderService;
+
+@RestController
+@RequestMapping("/user")
+public class UserController {
+	
+	@Autowired
+	private OrderService orderService;
+	
+	
+	// View Menu
+	@GetMapping("/menu")
+	public List<MenuItem> viewMenu(){
+		return orderService.viewMenu();
+	}
+	
+	
+	// Place an Order
+	@PostMapping("/order")
+	public Order placeOrder(@RequestBody Order order) {
+		return orderService.placeOrder(order);
+	}
+	
+	// Track Order Status
+	@GetMapping("/order/{id}")
+	public Order trackOrder(@PathVariable Long id) {
+		return orderService.trackOrder(id);
+	}
+	
+
+}

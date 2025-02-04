@@ -1,0 +1,9 @@
+package com.restaurant.admin.entity;
+
+
+
+public enum Category {
+    CHINESE,
+    NORTH_INDIAN,
+    SOUTH_INDIAN
+}

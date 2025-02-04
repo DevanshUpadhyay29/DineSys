@@ -1,0 +1,76 @@
+package com.restaurant.user.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.restaurant.user.entity.MenuItem;
+import com.restaurant.user.entity.Order;
+import com.restaurant.user.service.OrderService;
+
+@RestController
+@RequestMapping("/api/user/orders")
+public class UserController {
+	
+	@Autowired
+	private OrderService orderService;
+	
+	
+	// View Menu
+	@GetMapping("/menu")
+	public List<MenuItem> viewMenu(){
+		return orderService.viewMenu();
+	}
+	
+	
+//	@PostMapping("/order")
+//	public Order placeOrder(@RequestBody Order order) {
+//		return orderService.placeOrder(order);
+//	}
+	
+//	// Track Order Status
+//	@GetMapping("/order/{id}")
+//	public Order trackOrder(@PathVariable Long id) {
+//		return orderService.trackOrder(id);
+//	}
+	
+	
+	
+	//FEIGN CLIENT - KITCHEN SERVICE METHOD - 
+	
+	// Track Order Status
+	public Order getOrderById(@PathVariable Long id) {
+		return orderService.getOrderById(id);
+	}
+	
+
+	
+	// Place an Order
+	@PostMapping
+	public Order placeOrder(@RequestBody Order order) {
+		order.setStatus("Accepted");	//Default status when placing an order
+		return orderService.saveOrder(order);
+	}
+	
+	
+	// Update Order Status - Kitchen Service - Feign Client
+	@PutMapping("/{id}")
+	public Order updateOrderStatus(@PathVariable Long id, @RequestParam String status) {
+		return orderService.updateOrderStatus(id, status);
+	}
+	
+	//Get Pending Order - Status: Accepted - Kitchen Service - Feign Client
+	@GetMapping("/pending")
+	public List<Order> getAllPendingOrders(){
+		return orderService.getOrdersByStatus("Pending");
+	}	
+
+}

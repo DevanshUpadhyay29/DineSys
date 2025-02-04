@@ -1,0 +1,39 @@
+package com.restaurant.user.aspect;
+
+
+import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.annotation.After;
+import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
+
+@Aspect
+@Component
+public class LoggingAspect {
+
+    // Before any method in user-service executes, log an entry message.
+    @Before("execution(* com.restaurant.user..*(..))")
+    public void logBefore(JoinPoint joinPoint) {
+        System.out.println("User-Service: Entering method in controller/service...");
+    }
+
+    // After a method in user-service returns successfully, log an exit message.
+    @AfterReturning(pointcut = "execution(* com.restaurant.user..*(..))", returning = "result")
+    public void logAfterReturning(JoinPoint joinPoint, Object result) {
+        System.out.println("User-Service: Exiting method after successful execution...");
+    }
+
+    // If a method in user-service throws an exception, log an error message.
+    @AfterThrowing(pointcut = "execution(* com.restaurant.user..*(..))", throwing = "ex")
+    public void logAfterThrowing(JoinPoint joinPoint, Throwable ex) {
+        System.out.println("User-Service: An exception occurred during method execution.");
+    }
+
+    // After any method in user-service has completed execution (either normally or exceptionally), log completion.
+    @After("execution(* com.restaurant.user..*(..))")
+    public void logAfter(JoinPoint joinPoint) {
+        System.out.println("User-Service: Method execution complete.");
+    }
+}

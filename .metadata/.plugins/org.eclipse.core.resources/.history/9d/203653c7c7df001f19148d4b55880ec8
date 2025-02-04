@@ -1,0 +1,13 @@
+package com.restaurant.user.service;
+
+import java.util.List;
+
+import com.restaurant.user.entity.Order;
+
+public interface OrderService {
+	
+	List<Order> viewMenu();
+	Order placeOrder(Order order);
+	Order trackOrder(Long id);
+
+}

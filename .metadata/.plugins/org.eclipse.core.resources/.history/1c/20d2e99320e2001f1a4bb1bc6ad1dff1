@@ -1,0 +1,28 @@
+package com.restaurant.kitchen.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.restaurant.kitchen.model.Order;
+import com.resturant.kitchen.feign.UserServiceClient;
+
+@Service
+public interface KitchenService {
+
+	@Autowired
+	private UserServiceClient userServiceClient;
+	
+	
+	public List<Order> getPendingOrders(){
+		return userServiceClient.getAllPendingOrders();
+	}
+
+
+	public Order addOrder(Order order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

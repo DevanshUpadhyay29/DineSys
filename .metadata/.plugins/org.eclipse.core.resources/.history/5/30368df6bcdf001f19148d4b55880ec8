@@ -1,0 +1,14 @@
+spring.application.name=admin-service
+
+server.port=8081
+
+
+
+# Hibernate settings
+spring.jpa.hibernate.ddl-auto=update
+
+# DataSource settings
+spring.datasource.url=jdbc:mysql://localhost:3306/restaurant_db?createDatabaseIfNotExist=true
+spring.datasource.username=root
+spring.datasource.password=guru@29joker
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver

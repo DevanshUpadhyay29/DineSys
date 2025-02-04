@@ -1,0 +1,77 @@
+# ==============================
+# General Spring Boot Configurations
+# ==============================
+server.port=8087
+spring.application.name=api-gateway
+
+# ==============================
+# Eureka Discovery Configuration
+# ==============================
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
+eureka.instance.hostname=localhost
+eureka.client.register-with-eureka=true
+eureka.client.fetch-registry=true
+
+# ==============================
+# API Gateway Configuration
+# ==============================
+spring.cloud.gateway.discovery.locator.enabled=true
+spring.cloud.gateway.discovery.locator.lower-case-service-id=true
+
+# ------------------------------
+# Route Configurations
+# ------------------------------
+
+## Route for Admin Service
+spring.cloud.gateway.routes[0].id=admin-service
+spring.cloud.gateway.routes[0].uri=lb://admin-service
+spring.cloud.gateway.routes[0].predicates[0]=Path=/api/admin/**
+spring.cloud.gateway.routes[0].filters[0]=CircuitBreaker=adminCircuitBreaker
+spring.cloud.gateway.routes[0].filters[1]=Retry=3
+spring.cloud.gateway.routes[0].filters[2]=FallbackHeaders
+spring.cloud.gateway.routes[0].metadata.response-timeout=5000
+
+## Route for Kitchen Service
+spring.cloud.gateway.routes[1].id=kitchen-service
+spring.cloud.gateway.routes[1].uri=lb://kitchen-service
+spring.cloud.gateway.routes[1].predicates[0]=Path=/api/kitchen/**
+spring.cloud.gateway.routes[1].filters[0]=CircuitBreaker=kitchenCircuitBreaker
+spring.cloud.gateway.routes[1].filters[1]=Retry=3
+spring.cloud.gateway.routes[1].filters[2]=FallbackHeaders
+spring.cloud.gateway.routes[1].metadata.response-timeout=5000
+
+## Route for User Service
+spring.cloud.gateway.routes[2].id=user-service
+spring.cloud.gateway.routes[2].uri=lb://user-service
+spring.cloud.gateway.routes[2].predicates[0]=Path=/api/user/orders/**
+spring.cloud.gateway.routes[2].filters[0]=CircuitBreaker=userCircuitBreaker
+spring.cloud.gateway.routes[2].filters[1]=Retry=3
+spring.cloud.gateway.routes[2].filters[2]=FallbackHeaders
+spring.cloud.gateway.routes[2].metadata.response-timeout=5000
+
+# ==============================
+# Circuit Breaker (Resilience4J)
+# ==============================
+resilience4j.circuitbreaker.instances.adminCircuitBreaker.slidingWindowSize=10
+resilience4j.circuitbreaker.instances.adminCircuitBreaker.failureRateThreshold=50
+resilience4j.circuitbreaker.instances.adminCircuitBreaker.waitDurationInOpenState=5000
+resilience4j.circuitbreaker.instances.adminCircuitBreaker.permittedNumberOfCallsInHalfOpenState=5
+resilience4j.circuitbreaker.instances.adminCircuitBreaker.minimumNumberOfCalls=5
+
+resilience4j.circuitbreaker.instances.kitchenCircuitBreaker.slidingWindowSize=10
+resilience4j.circuitbreaker.instances.kitchenCircuitBreaker.failureRateThreshold=50
+resilience4j.circuitbreaker.instances.kitchenCircuitBreaker.waitDurationInOpenState=5000
+resilience4j.circuitbreaker.instances.kitchenCircuitBreaker.permittedNumberOfCallsInHalfOpenState=5
+resilience4j.circuitbreaker.instances.kitchenCircuitBreaker.minimumNumberOfCalls=5
+
+resilience4j.circuitbreaker.instances.userCircuitBreaker.slidingWindowSize=10
+resilience4j.circuitbreaker.instances.userCircuitBreaker.failureRateThreshold=50
+resilience4j.circuitbreaker.instances.userCircuitBreaker.waitDurationInOpenState=5000
+resilience4j.circuitbreaker.instances.userCircuitBreaker.permittedNumberOfCallsInHalfOpenState=5
+resilience4j.circuitbreaker.instances.userCircuitBreaker.minimumNumberOfCalls=5
+
+# ==============================
+# Logging Configuration
+# ==============================
+logging.level.org.springframework.cloud.gateway=DEBUG
+logging.level.reactor.netty.http.client=DEBUG

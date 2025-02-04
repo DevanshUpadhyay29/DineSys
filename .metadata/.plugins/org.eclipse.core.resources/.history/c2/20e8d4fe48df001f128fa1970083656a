@@ -1,0 +1,52 @@
+package com.restaurant.admin.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.restaurant.admin.entity.Menu;
+import com.restaurant.admin.service.MenuService;
+
+@RestController
+@RequestMapping("/api/admin")
+public class MenuController {
+	
+	@Autowired
+	private MenuService menuService;
+	
+	@PostMapping
+	public ResponseEntity<Menu> addDish(@RequestBody Menu menu) throws Exception{
+		Menu createdMenu = menuService.addDish(menu);
+		return new ResponseEntity<>(createdMenu, HttpStatus.CREATED);		
+	}
+	
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Menu> updateDish(@PathVariable Long id,@RequestBody Menu updatedMenu){
+		Menu menu = menuService.updateDish(id, updatedMenu);
+		return new ResponseEntity<>(menu, HttpStatus.OK);	
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<Void> deleteDish(@PathVariable Long id){
+		menuService.deleteDish(id);
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+	}
+	
+	@GetMapping
+	public ResponseEntity<List<Menu>> getAllDishes(){
+		List<Menu> menuList = menuService.getAllDishes();
+		return new ResponseEntity<>(menuList, HttpStatus.OK);
+		
+	}
+}

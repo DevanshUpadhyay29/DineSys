@@ -1,0 +1,27 @@
+package com.restaurant.kitchen.service;
+
+import java.util.List;
+
+import com.restaurant.kitchen.model.Order;
+
+public class KitchenServiceImpl implements KitchenService {
+
+	@Override
+	public Order addOrder(Order order) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Order updateOrderStatus(Long id, String status) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Order> getPendingOrders() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}
