@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <typeInfoHistroy>
-    <typeInfo handle="=admin-service/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.restaurant.admin.service{MenuService.java[MenuService" modifiers="513" timestamp="1738269021000"/>
-    <typeInfo handle="=user-service/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.restaurant.user.service{OrderService.java[OrderService" modifiers="513" timestamp="1738588920000"/>
-    <typeInfo handle="=kitchen-service1/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.restaurant.kitchen.service{KitchenService.java[KitchenService" modifiers="513" timestamp="1738591436000"/>
+    <typeInfo handle="=admin-service/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.restaurant.admin.service{MenuService.java[MenuService" modifiers="513" timestamp="1738689332092"/>
+    <typeInfo handle="=user-service/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.restaurant.user.service{OrderService.java[OrderService" modifiers="513" timestamp="1738689354147"/>
+    <typeInfo handle="=kitchen-service1/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;com.restaurant.kitchen.service{KitchenService.java[KitchenService" modifiers="513" timestamp="1738689348083"/>
 </typeInfoHistroy>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="KitchenServiceImplTest" project="kitchen-service1" tests="5" started="5" failures="0" errors="0" ignored="0">
+  <testsuite name="com.restaurant.KitchenServiceImplTest" time="8.881" displayname="KitchenServiceImplTest" uniqueid="[engine:junit-jupiter]/[class:com.restaurant.KitchenServiceImplTest]">
+    <testcase name="testGetPendingOrders" classname="com.restaurant.KitchenServiceImplTest" time="8.852" displayname="testGetPendingOrders()" uniqueid="[engine:junit-jupiter]/[class:com.restaurant.KitchenServiceImplTest]/[method:testGetPendingOrders()]"/>
+    <testcase name="testUpdateOrderStatus" classname="com.restaurant.KitchenServiceImplTest" time="0.01" displayname="testUpdateOrderStatus()" uniqueid="[engine:junit-jupiter]/[class:com.restaurant.KitchenServiceImplTest]/[method:testUpdateOrderStatus()]"/>
+    <testcase name="testGetPendingOrdersNotFound" classname="com.restaurant.KitchenServiceImplTest" time="0.006" displayname="testGetPendingOrdersNotFound()" uniqueid="[engine:junit-jupiter]/[class:com.restaurant.KitchenServiceImplTest]/[method:testGetPendingOrdersNotFound()]"/>
+    <testcase name="testAddOrder" classname="com.restaurant.KitchenServiceImplTest" time="0.003" displayname="testAddOrder()" uniqueid="[engine:junit-jupiter]/[class:com.restaurant.KitchenServiceImplTest]/[method:testAddOrder()]"/>
+    <testcase name="testUpdateOrderStatusNotFound" classname="com.restaurant.KitchenServiceImplTest" time="0.006" displayname="testUpdateOrderStatusNotFound()" uniqueid="[engine:junit-jupiter]/[class:com.restaurant.KitchenServiceImplTest]/[method:testUpdateOrderStatusNotFound()]"/>
+  </testsuite>
+</testrun>

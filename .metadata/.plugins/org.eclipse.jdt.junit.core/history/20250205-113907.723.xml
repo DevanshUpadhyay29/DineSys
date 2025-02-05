@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="OrderServiceImplTest" project="user-service" tests="7" started="7" failures="0" errors="0" ignored="0">
+  <testsuite name="com.restaurant.OrderServiceImplTest" time="6.626" displayname="OrderServiceImplTest" uniqueid="[engine:junit-jupiter]/[class:com.restaurant.OrderServiceImplTest]">
+    <testcase name="testUpdateOrderStatus" classname="com.restaurant.OrderServiceImplTest" time="6.582" displayname="testUpdateOrderStatus()" uniqueid="[engine:junit-jupiter]/[class:com.restaurant.OrderServiceImplTest]/[method:testUpdateOrderStatus()]"/>
+    <testcase name="testUpdateOrderStatusInvalid" classname="com.restaurant.OrderServiceImplTest" time="0.012" displayname="testUpdateOrderStatusInvalid()" uniqueid="[engine:junit-jupiter]/[class:com.restaurant.OrderServiceImplTest]/[method:testUpdateOrderStatusInvalid()]"/>
+    <testcase name="testGetOrdersByStatus" classname="com.restaurant.OrderServiceImplTest" time="0.006" displayname="testGetOrdersByStatus()" uniqueid="[engine:junit-jupiter]/[class:com.restaurant.OrderServiceImplTest]/[method:testGetOrdersByStatus()]"/>
+    <testcase name="testGetOrderByIdNotFound" classname="com.restaurant.OrderServiceImplTest" time="0.004" displayname="testGetOrderByIdNotFound()" uniqueid="[engine:junit-jupiter]/[class:com.restaurant.OrderServiceImplTest]/[method:testGetOrderByIdNotFound()]"/>
+    <testcase name="testGetOrderById" classname="com.restaurant.OrderServiceImplTest" time="0.006" displayname="testGetOrderById()" uniqueid="[engine:junit-jupiter]/[class:com.restaurant.OrderServiceImplTest]/[method:testGetOrderById()]"/>
+    <testcase name="testSaveOrder" classname="com.restaurant.OrderServiceImplTest" time="0.005" displayname="testSaveOrder()" uniqueid="[engine:junit-jupiter]/[class:com.restaurant.OrderServiceImplTest]/[method:testSaveOrder()]"/>
+    <testcase name="testViewMenu" classname="com.restaurant.OrderServiceImplTest" time="0.005" displayname="testViewMenu()" uniqueid="[engine:junit-jupiter]/[class:com.restaurant.OrderServiceImplTest]/[method:testViewMenu()]"/>
+  </testsuite>
+</testrun>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="MenuServiceImplTest" project="admin-service" tests="6" started="6" failures="0" errors="0" ignored="0">
+  <testsuite name="com.example.demo.MenuServiceImplTest" time="8.821" displayname="MenuServiceImplTest" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.MenuServiceImplTest]">
+    <testcase name="testAddDish" classname="com.example.demo.MenuServiceImplTest" time="8.789" displayname="testAddDish()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.MenuServiceImplTest]/[method:testAddDish()]"/>
+    <testcase name="testDeleteDishNotFound" classname="com.example.demo.MenuServiceImplTest" time="0.006" displayname="testDeleteDishNotFound()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.MenuServiceImplTest]/[method:testDeleteDishNotFound()]"/>
+    <testcase name="testUpdateDish" classname="com.example.demo.MenuServiceImplTest" time="0.004" displayname="testUpdateDish()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.MenuServiceImplTest]/[method:testUpdateDish()]"/>
+    <testcase name="testUpdateDishNotFound" classname="com.example.demo.MenuServiceImplTest" time="0.003" displayname="testUpdateDishNotFound()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.MenuServiceImplTest]/[method:testUpdateDishNotFound()]"/>
+    <testcase name="testGetAllDishes" classname="com.example.demo.MenuServiceImplTest" time="0.004" displayname="testGetAllDishes()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.MenuServiceImplTest]/[method:testGetAllDishes()]"/>
+    <testcase name="testDeleteDish" classname="com.example.demo.MenuServiceImplTest" time="0.013" displayname="testDeleteDish()" uniqueid="[engine:junit-jupiter]/[class:com.example.demo.MenuServiceImplTest]/[method:testDeleteDish()]"/>
+  </testsuite>
+</testrun>
